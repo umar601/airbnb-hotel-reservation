@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= data.type %> in <%= data.city %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/view.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Title -->
+    <div class="header">
+      <h1><%= data.type %> in <%= data.city %></h1>
+      <p class="subtitle">Hosted by <%= data.sellername %></p>
+    </div>
+
+    <!-- Hero image -->
+    <div class="hero">
+      <% if (data.images && data.images.length > 0) { %>
+        <img src="<%= data.images[0] %>" alt="Main hotel photo">
+      <% } %>
+    </div>
+
+    <!-- Extra images -->
+    <% if (data.images && data.images.length > 1) { %>
+      <div class="gallery">
+        <% for (let image of data.images.slice(1)) { %>
+          <img src="<%= image %>" alt="Hotel photo">
+        <% } %>
+      </div>
+    <% } %>
+
+    <!-- Details + Price Card -->
+    <div class="details">
+      <div class="details-left">
+        <h3>Status</h3>
+        <p><%= data.status %></p>
+
+        <h3>Phone</h3>
+        <p><%= data.sellno %></p>
+
+        <h3>Location</h3>
+        <p><%= data.location %></p>
+
+        <h3>Description</h3>
+        <p><%= data.description %></p>
+      </div>
+
+      <div class="price-card">
+        <div class="price">$<%= data.price %> / night</div>
+        <button>Reserve</button>
+      </div>
+    </div>
+
+    <a href="/hotel" class="back-link">Back to Listings</a>
+  </div>
+
+</body>
+</html>

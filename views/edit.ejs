@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Hotel - Airbnb</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fab fa-airbnb logo"></i>
+            <h1>Edit Hotel Listing</h1>
+        </div>
+        
+        <div class="form-container">
+            <form action="http://localhost:8080/hotel/<%=data._id %>?_method=patch" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sellername">
+                            <i class="fas fa-user" style="color: #ff385c;"></i>
+                            Hotel name
+                        </label>
+                        <input type="text" name="sellername" id="sellername" value="<%= data.sellername %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">
+                            <i class="fas fa-city" style="color: #ff385c;"></i>
+                            City
+                        </label>
+                        <input type="text" name="city" id="city" value="<%= data.city %>" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="location">
+                            <i class="fas fa-map-marker-alt" style="color: #ff385c;"></i>
+                            Location
+                        </label>
+                        <input type="text" name="location" id="location" value="<%= data.location %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="status">
+                            <i class="fas fa-bed" style="color: #ff385c;"></i>
+                            Status
+                        </label>
+                        <select name="status" id="status" required>
+                            <option value="available" <%= data.status === 'available' ? 'selected' : '' %>>Available</option>
+                            <option value="not available" <%= data.status === 'not available' ? 'selected' : '' %>>Not Available</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="type">
+                            <i class="fas fa-home" style="color: #ff385c;"></i>
+                            Room Type
+                        </label>
+                        <select name="type" id="type" required>
+                            <option value="single" <%= data.type === 'single' ? 'selected' : '' %>>Single</option>
+                            <option value="double" <%= data.type === 'double' ? 'selected' : '' %>>Double</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sellno">
+                            <i class="fas fa-phone" style="color: #ff385c;"></i>
+                            Phone Number
+                        </label>
+                        <input type="tel" name="sellno" id="sellno" value="<%= data.sellno%>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="price">
+                            <i class="fas fa-dollar-sign" style="color: #ff385c;"></i>
+                            Price per Night
+                        </label>
+                        <input type="text" name="price" id="price" value="<%= data.price %>" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="description">
+                            <i class="fas fa-align-left" style="color: #ff385c;"></i>
+                            Description
+                        </label>
+                        <textarea name="description" id="description" required><%= data.description%></textarea>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-save"></i> Update Listing
+                    </button>
+                    
+                    <a href="http://localhost:8080/hotel" class="btn btn-cancel">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                </div>
+            </form>
+            
+            <form action="http://localhost:8080/hotel/<%= data._id %>?_method=delete" method="post" onsubmit="return confirm('Are you sure you want to delete this hotel listing? This action cannot be undone.')">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-delete">
+                        <i class="fas fa-trash"></i> Delete Listing
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airbnb Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <i class="fab fa-airbnb"></i>
+        <span>airbnb</span>
+      </div>
+
+      <!-- Search Form -->
+      <form class="search-form" action="/hotel/search" method="POST">
+        <input type="search" name="search" class="search-input" placeholder="Search by hotel name or city">
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Hotels Grid -->
+    <% if (allDetails && allDetails.length > 0) { %>
+      <div class="hotels-grid">
+        <% for(detail of allDetails) { %>
+          <div class="hotel-card" onclick="window.location.href='/hotel/view/<%= detail._id %>'">
+            <img src="<%= detail.images[0] %>" alt="Hotel image" class="hotel-image">
+            <div class="hotel-info">
+              <div class="hotel-top">
+                <span class="hotel-city"><%= detail.city %></span>
+                <span class="hotel-price">$<%= detail.price %> / night</span>
+              </div>
+              <div class="hotel-name"><%= detail.sellername %></div>
+              <div class="hotel-actions">
+                <a href="/hotel/<%= detail._id %>" class="edit-btn">
+                  <i class="fas fa-edit"></i> Edit
+                </a>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    <% } else { %>
+      <div class="empty-state">
+        <i class="fas fa-home"></i>
+        <p>No hotels found</p>
+        <p>Add your first hotel to get started</p>
+      </div>
+    <% } %>
+
+    <!-- Add Hotel -->
+    <a href="/hotel/new" class="add-hotel-btn">
+      <i class="fas fa-plus"></i> Add new hotel
+    </a>
+
+  </div>
+</body>
+</html>
