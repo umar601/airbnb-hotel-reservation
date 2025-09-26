@@ -15,7 +15,7 @@
             padding: 20px;
         }
         
-        .container {
+        .containe{
             width: 100%;
             max-width: 700px;
             background: white;
@@ -94,14 +94,14 @@
             resize: vertical;
         }
         
-        .btn-group {
+        .bt-group {
             display: flex;
             gap: 15px;
             margin-top: 30px;
             grid-column: 1 / -1;
         }
         
-        .btn {
+        .bt{
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -116,34 +116,34 @@
             flex: 1;
         }
         
-        .btn-submit {
+        .bt-submit {
             background: #ff385c;
             color: white;
         }
         
-        .btn-submit:hover {
+        .bt-submit:hover {
             background: #e61e4d;
             transform: translateY(-2px);
         }
         
-        .btn-delete {
+        .bt-delete {
             background: #ff385c;
             color: white;
         }
         
-        .btn-delete:hover {
+        .bt-delete:hover {
             background: #d90f64;
             transform: translateY(-2px);
         }
         
-        .btn-cancel {
+        .bt-cancel {
             background: transparent;
             color: #717171;
             border: 1px solid #dddddd;
             text-decoration: none;
         }
         
-        .btn-cancel:hover {
+        .bt-cancel:hover {
             background: #f7f7f7;
             transform: translateY(-2px);
         }
@@ -153,7 +153,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .btn-group {
+            .bt-group {
                 flex-direction: column;
             }
         }

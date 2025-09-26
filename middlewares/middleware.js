@@ -2,6 +2,8 @@ const path = require("path");
 const express = require("express");
 const methodOverride = require("method-override");
 
+
+
 function configureMiddleware(app) {
   
   app.set("view engine", "ejs");
@@ -17,6 +19,8 @@ function configureMiddleware(app) {
 
   
   app.use(methodOverride("_method"));
+
+ 
 
   
 }

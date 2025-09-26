@@ -36,7 +36,9 @@ async function handlertopostlisting(req,res){
         description:description
     });
 
-    await newuser.save();
+    await newuser.save().then((res)=>{
+        console.log(res)
+    })
 
     res.redirect("http://localhost:8080/hotel");
 
