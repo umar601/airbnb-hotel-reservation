@@ -12,6 +12,8 @@ const { databaseconnection } = require("./connection");
 
 const url = "mongodb://127.0.0.1:27017/airbnb"
 
+const expressError = require("./expresserro");
+
 
 databaseconnection(url).then(()=>{
     console.log("sucessful")
@@ -21,7 +23,22 @@ databaseconnection(url).then(()=>{
 
 configureMiddleware(app);
 
-app.use("/hotel", router);
+app.use("/hotel",router);
+
+app.all(/.*/, (req, res, next) => {
+  next(new expressError(404, "Page not found"));
+});
+
+app.use((err,req,res,next)=>{
+
+
+    let {status=500,message}= err;
+    res.status(status).render("error",{message});
+
+  })
+
+
+
 
 
 app.listen(port,()=>{

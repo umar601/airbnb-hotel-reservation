@@ -8,28 +8,38 @@ const user = require("../models/airbnb")
 
 const { hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew} = require("../controllers/controller");
 
+function asyncWrap(fun){
+
+    return function(req,res,next){
+        fun(req,res,next).catch((err)=>{
+            next(err);
+        })
+    }
+}
+
+
 router.route("/")
 
-.get(hadlertogetalllisting)
+.get(asyncWrap(hadlertogetalllisting))
 
-.post(uplaod.array('images',10),handlertopostlisting)
+.post(uplaod.array('images',10),asyncWrap(handlertopostlisting))
 
-router.get("/new",handlertonew)
+router.get("/new",asyncWrap(handlertonew))
 
 
 router.route("/:id")
 
-.get(handlertoedit)
+.get(asyncWrap(handlertoedit))
 
-.patch(handelertoupdate)
+.patch(asyncWrap(handelertoupdate))
 
-.delete(handelertodelete)
-
-
-router.get("/view/:id",handlertoviewspecfic)
+.delete(asyncWrap(handelertodelete))
 
 
-router.post("/search",handlertosearch)
+router.get("/view/:id",asyncWrap(handlertoviewspecfic))
+
+
+router.post("/search",asyncWrap(handlertosearch))
 
 
 module.exports = router;

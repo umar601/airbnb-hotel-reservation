@@ -10,7 +10,8 @@ async function hadlertogetalllisting(req,res){
 }
 
 
-async function handlertopostlisting(req,res){
+async function handlertopostlisting(req,res,next){
+
 
     let imageUrls = [];
 
@@ -34,13 +35,15 @@ async function handlertopostlisting(req,res){
         status:status,
         images:imageUrls,
         description:description
-    });
+    })
 
     await newuser.save().then((res)=>{
         console.log(res)
     })
 
-    res.redirect("http://localhost:8080/hotel");
+    res.redirect("http://localhost:8080/hotel")
+
+   
 
 }
 
@@ -55,10 +58,12 @@ async function handlertoedit(req,res){
 }
 
 
-async function handelertoupdate(req,res){
+async function handelertoupdate(req,res,next){
+
+    
 
     let {id} = req.params;
-    console.log("update")
+    // console.log("update")
 
     let {sellername,type,price,sellno,city,location,status,images,description} = req.body;
 
@@ -76,7 +81,6 @@ async function handelertoupdate(req,res){
     });
 
     res.redirect("/hotel")
-
 
 }
 

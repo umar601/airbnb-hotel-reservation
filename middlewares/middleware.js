@@ -19,9 +19,6 @@ function configureMiddleware(app) {
 
   
   app.use(methodOverride("_method"));
-
- 
-
   
 }
 
