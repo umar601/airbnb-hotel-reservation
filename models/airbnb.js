@@ -53,12 +53,14 @@ const airbnbSchema = mongoose.Schema(
         city:{
             type:String,
             required:true
-        }
+        },
+       reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "review"
+  }]
 
     }
 )
 
 
-const user = mongoose.model("user",airbnbSchema);
-
-module.exports = user;
+module.exports = mongoose.model("user",airbnbSchema);
