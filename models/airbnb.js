@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const review = require("./review");
 
 // async function main() {
 
@@ -16,7 +17,7 @@ const mongoose = require("mongoose");
 // })
 
 
-const airbnbSchema = mongoose.Schema(
+const airbnbSchema = new mongoose.Schema(
 
     {
         type:{
@@ -63,4 +64,15 @@ const airbnbSchema = mongoose.Schema(
 )
 
 
+airbnbSchema.post("findOneAndDelete",async(doc)=>{
+
+    await review.deleteMany({ _id: { $in: doc.review } });
+     console.log("Deleted reviews of post:", doc._id);
+
+
+})
+
+
 module.exports = mongoose.model("user",airbnbSchema);
+
+

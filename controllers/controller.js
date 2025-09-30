@@ -156,4 +156,21 @@ async function handlerToAddReview(req,res) {
 }
 
 
-module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview}
+async function handlerToDeleteReview(req,res){
+
+    let { postid,reviewid } = req.params;
+
+    await review.findByIdAndDelete(reviewid)
+       await user.findOneAndUpdate(
+        { _id: postid },                  
+        { $pull: { review: reviewid } }   
+    );
+
+    res.redirect(`/hotel/view/${postid}`)
+
+}
+
+
+
+
+module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview}

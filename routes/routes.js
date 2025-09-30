@@ -6,7 +6,7 @@ const uplaod = require("../middlewares/upload");
 
 const user = require("../models/airbnb")
 
-const { hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview} = require("../controllers/controller");
+const { hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview} = require("../controllers/controller");
 
 function asyncWrap(fun){
 
@@ -42,6 +42,8 @@ router.get("/view/:id",asyncWrap(handlertoviewspecfic))
 router.post("/search",asyncWrap(handlertosearch))
 
 router.post("/:id/review",asyncWrap(handlerToAddReview));
+
+router.delete("/:postid/review/:reviewid",asyncWrap(handlerToDeleteReview));
 
 
 module.exports = router;
