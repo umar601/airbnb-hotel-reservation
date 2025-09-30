@@ -6,6 +6,7 @@
   <title><%= data.type %> in <%= data.city %></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/view.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
 
@@ -53,9 +54,66 @@
         <button>Reserve</button>
       </div>
     </div>
+    <hr>
+    <h3>Reviews Section</h3>
+    <form action="/hotel/<%=data._id%>/review" novalidate class="needs-validation" method="post">
+      <input type="range" name="rating" id="" required min="1" max="5" class="form-range" style="width:50%">
+      <textarea name="comment" id="" class="form-control" style="width:50%; height:150px;" required placeholder="Post your review"></textarea>
+       <div class="invalid-feedback">
+        feedBack required !
+       </div>
+      <button type="submit" class="btn btn-success mt-3">Post Review</button>
+    </form>
+     <hr>
+     <h3>Reviews</h3>
+    <% if(data.review&&data.review.length>0){ %>
+     
+    <div class="row">
+  <% for(review of data.review) { %>
+    <div class="col-md-6 d-flex mb-4">
+      <div class="card shadow-lg border-0 rounded-3 h-100 w-100" style="transition: transform 0.3s;">
+        <div class="card-body p-4 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <h5 class="card-title text-primary fw-bold mb-0">
+              <i class="fas fa-user me-2"></i><%= review.createdBy %>
+            </h5>
+            <span class="badge bg-warning text-dark fs-6">
+              <i class="fas fa-star me-1"></i><%= review.rating %>
+            </span>
+          </div>
+          
+          <p class="card-subtitle text-muted mb-3 small">
+            <i class="far fa-clock me-1"></i>
+            <%= review.createdAt.toString().split(" ").splice(0,4).join(" ") %>
+          </p>
+          
+          <div class="card-text flex-grow-1">
+            <p class="mb-0 lh-base" style="font-size: 1rem;">
+              <%= review.comment %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>
+<% }else{%>
+  <div>
+  <h1 class="d-flex justify-content-center">no reviews yet!</h1>
+</div>
+<%} %>
+
+ 
+
+ 
+
+
 
     <a href="/hotel" class="back-link">Back to Listings</a>
   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="/script.js"></script>
 
 </body>
 </html>

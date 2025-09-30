@@ -4,11 +4,23 @@ const reviewSchema = moongoose.Schema({
 
     rating:{
         type:Number,
-        required:true
+        required:true,
+        min:1,
+        max:5
     },
     comment:{
         type:String,
         required:true
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now
+
+    },
+    createdBy:{
+        type:String,
+        required:true
+
     }
 })
 

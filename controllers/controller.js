@@ -1,5 +1,6 @@
 
 const user = require("../models/airbnb");
+const review = require("../models/review");
 
 
 async function hadlertogetalllisting(req,res){
@@ -88,7 +89,7 @@ async function handlertoviewspecfic(req,res){
 
     let {id} = req.params;
 
-    let data = await user.findById(id);
+    let data = await user.findById(id).populate("review");
 
     res.render("view",{data});
 
@@ -130,4 +131,29 @@ async function handlertonew(req,res){
 }
 
 
-module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew}
+async function handlerToAddReview(req,res) {
+
+    let {id} = req.params;
+
+    let { rating,comment } = req.body;
+
+    let listing = await user.findById(id);
+
+    let newReview = new review({
+
+        rating:rating,
+        comment:comment,
+        createdBy:"umar"
+    })
+
+    await newReview.save();
+    listing.review.push(newReview);
+    await listing.save();
+
+    console.log("list",listing);
+    res.redirect(`/hotel/view/${id}`)
+    
+}
+
+
+module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview}
