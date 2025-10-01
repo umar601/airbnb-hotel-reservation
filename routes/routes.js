@@ -6,6 +6,15 @@ const uplaod = require("../middlewares/upload");
 
 const { hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview} = require("../controllers/controller");
 
+const listSchema = require("../listingSchema");
+
+const validateListing = (req,res,next)=>{
+let {error}= listSchema.validate(req.body);
+if(error){
+    res.status(500).render("error",{error})
+}
+next();
+}
 function asyncWrap(fun){
 
     return function(req,res,next){
@@ -20,7 +29,7 @@ router.route("/")
 
 .get(asyncWrap(hadlertogetalllisting))
 
-.post(uplaod.array('images',10),asyncWrap(handlertopostlisting))
+.post(validateListing,uplaod.array('images',10),asyncWrap(handlertopostlisting))
 
 router.get("/new",asyncWrap(handlertonew))
 
@@ -29,7 +38,7 @@ router.route("/:id")
 
 .get(asyncWrap(handlertoedit))
 
-.patch(asyncWrap(handelertoupdate))
+.patch(validateListing,asyncWrap(handelertoupdate))
 
 .delete(asyncWrap(handelertodelete))
 

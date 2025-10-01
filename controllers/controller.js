@@ -6,14 +6,13 @@ const review = require("../models/review");
 async function hadlertogetalllisting(req,res){
 
     let allDetails = await user.find();
+    let title = "air bnb";
 
-    res.render("home",{allDetails});
+    res.render("home",{allDetails,title});
 }
 
 
 async function handlertopostlisting(req,res,next){
-
-
     let imageUrls = [];
 
     if (req.files && req.files.length > 0) {
@@ -49,6 +48,8 @@ async function handlertopostlisting(req,res,next){
 }
 
 async function handlertoedit(req,res){
+
+ listSchema.validate(req.body);
 
     let {id} = req.params;
 
