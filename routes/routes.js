@@ -4,8 +4,6 @@ const router = express.Router();
 
 const uplaod = require("../middlewares/upload");
 
-const user = require("../models/airbnb")
-
 const { hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview} = require("../controllers/controller");
 
 function asyncWrap(fun){

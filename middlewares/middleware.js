@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const methodOverride = require("method-override");
+const engine = require("ejs-mate");
 
 
 
@@ -19,6 +20,7 @@ function configureMiddleware(app) {
 
   
   app.use(methodOverride("_method"));
+  app.engine("ejs",engine);
   
 }
 
