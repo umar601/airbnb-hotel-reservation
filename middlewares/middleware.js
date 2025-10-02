@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const methodOverride = require("method-override");
 const engine = require("ejs-mate");
+const cookieParser = require("cookie-parser");
 
 
 
@@ -21,6 +22,10 @@ function configureMiddleware(app) {
   
   app.use(methodOverride("_method"));
   app.engine("ejs",engine);
+
+  app.use(cookieParser("secret")); //incase of signed
+
+   app.use(cookieParser());   //for simple
   
 }
 

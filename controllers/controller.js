@@ -1,4 +1,5 @@
 
+const { signedCookie } = require("cookie-parser");
 const user = require("../models/airbnb");
 const review = require("../models/review");
 
@@ -7,6 +8,13 @@ async function hadlertogetalllisting(req,res){
 
     let allDetails = await user.find();
     let title = "air bnb";
+    res.cookie("name","umar",{signed:true},{maxAge:24*60*60*1000});
+
+    //maxage id expire of cookie and its in mili second
+
+    console.log(req.signedCookies);  //for signed
+    console.log(req.cookies); //for simple
+
 
     res.render("home",{allDetails,title});
 }
@@ -41,7 +49,7 @@ async function handlertopostlisting(req,res,next){
         console.log(res)
     })
 
-    res.redirect("http://localhost:8080/hotel")
+    res.redirect("/hotel")
 
    
 
@@ -49,7 +57,6 @@ async function handlertopostlisting(req,res,next){
 
 async function handlertoedit(req,res){
 
- listSchema.validate(req.body);
 
     let {id} = req.params;
 
