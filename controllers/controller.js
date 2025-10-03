@@ -9,11 +9,23 @@ async function hadlertogetalllisting(req,res){
     let allDetails = await user.find();
     let title = "air bnb";
     res.cookie("name","umar",{signed:true},{maxAge:24*60*60*1000});
+    // if(req.session.count){
+    // req.session.count++;
+    // }else{
+    // req.session.count=0;
+    // }
 
+    // console.log(req.session.count);
+
+    // console.log(req.session);
+
+    //output  cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
+// }
+    
     //maxage id expire of cookie and its in mili second
 
-    console.log(req.signedCookies);  //for signed
-    console.log(req.cookies); //for simple
+    // console.log(req.signedCookies);  //for signed
+    // console.log(req.cookies); //for simple
 
 
     res.render("home",{allDetails,title});

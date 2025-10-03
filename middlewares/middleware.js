@@ -4,6 +4,8 @@ const methodOverride = require("method-override");
 const engine = require("ejs-mate");
 const cookieParser = require("cookie-parser");
 
+const expressSession = require("express-session");
+
 
 
 function configureMiddleware(app) {
@@ -25,8 +27,10 @@ function configureMiddleware(app) {
 
   app.use(cookieParser("secret")); //incase of signed
 
-   app.use(cookieParser());   //for simple
+  //  app.use(cookieParser());   //for simple
   
+
+   app.use(expressSession({secret:"secret",resave:false,saveUninitialized:true}));
 }
 
 module.exports = configureMiddleware;
