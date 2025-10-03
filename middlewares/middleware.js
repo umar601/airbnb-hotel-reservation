@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 
 const expressSession = require("express-session");
 
+const flash = require("connect-flash");
+
 
 
 function configureMiddleware(app) {
@@ -31,6 +33,9 @@ function configureMiddleware(app) {
   
 
    app.use(expressSession({secret:"secret",resave:false,saveUninitialized:true}));
+
+
+   app.use(flash());
 }
 
 module.exports = configureMiddleware;

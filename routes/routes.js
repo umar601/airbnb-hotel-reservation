@@ -8,13 +8,17 @@ const { hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdat
 
 const listSchema = require("../listingSchema");
 
-const validateListing = (req,res,next)=>{
-let {error}= listSchema.validate(req.body);
-if(error){
-    res.status(500).render("error",{error})
-}
-next();
-}
+const validateListing = (req, res, next) => {
+  const { error } = listSchema.validate(req.body);
+
+  if (error) {
+    const message = error.details.map(el => el.message).join(", ");
+    return res.status(400).render("error", { message });
+  }
+
+  next(); // only call next if no validation error
+};
+
 function asyncWrap(fun){
 
     return function(req,res,next){

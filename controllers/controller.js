@@ -8,7 +8,10 @@ async function hadlertogetalllisting(req,res){
 
     let allDetails = await user.find();
     let title = "air bnb";
-    res.cookie("name","umar",{signed:true},{maxAge:24*60*60*1000});
+    res.cookie("name","umar",{signed:true,maxAge:24*60*60*1000});
+    // req.session.name="umar";
+    
+
     // if(req.session.count){
     // req.session.count++;
     // }else{
@@ -28,12 +31,14 @@ async function hadlertogetalllisting(req,res){
     // console.log(req.cookies); //for simple
 
 
-    res.render("home",{allDetails,title});
+    res.render("home",{allDetails,title,message:req.flash("success")});
 }
 
 
 async function handlertopostlisting(req,res,next){
     let imageUrls = [];
+
+    req.flash("success","Listing posted successfully!")
 
     if (req.files && req.files.length > 0) {
 
@@ -81,7 +86,7 @@ async function handlertoedit(req,res){
 
 async function handelertoupdate(req,res,next){
 
-    
+    req.flash("success","Listing updated successfully!")
 
     let {id} = req.params;
     // console.log("update")
@@ -111,11 +116,13 @@ async function handlertoviewspecfic(req,res){
 
     let data = await user.findById(id).populate("review");
 
-    res.render("view",{data});
+    res.render("view",{data,message:req.flash("success")});
 
 }
 
 async function handelertodelete(req,res){
+
+    req.flash("success","Listing deleted successfully!")
 
     let {id} = req.params;
 
@@ -153,6 +160,8 @@ async function handlertonew(req,res){
 
 async function handlerToAddReview(req,res) {
 
+    req.flash("success","review posted successfully!")
+
     let {id} = req.params;
 
     let { rating,comment } = req.body;
@@ -177,6 +186,9 @@ async function handlerToAddReview(req,res) {
 
 
 async function handlerToDeleteReview(req,res){
+
+
+    req.flash("success","review delteted successfully!")
 
     let { postid,reviewid } = req.params;
 
