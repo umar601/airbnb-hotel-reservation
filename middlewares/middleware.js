@@ -32,7 +32,17 @@ function configureMiddleware(app) {
   //  app.use(cookieParser());   //for simple
   
 
-   app.use(expressSession({secret:"secret",resave:false,saveUninitialized:true}));
+   app.use(expressSession(
+    {secret:"secret",
+    resave:false,
+    saveUninitialized:true,
+    cookie:{
+      expires:Date.now()+7*24*60*60*1000,  //mean after one week
+    maxAge:Date.now()+7*24*60*60*1000,
+    httpOnly:true  //for cross scripting attacks
+
+    }
+  }));
 
 
    app.use(flash());

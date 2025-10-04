@@ -8,7 +8,7 @@ async function hadlertogetalllisting(req,res){
 
     let allDetails = await user.find();
     let title = "air bnb";
-    res.cookie("name","umar",{signed:true,maxAge:24*60*60*1000});
+    // res.cookie("name","umar",{signed:true,maxAge:Date.now*24*60*60*1000});
     // req.session.name="umar";
     
 
@@ -30,8 +30,12 @@ async function hadlertogetalllisting(req,res){
     // console.log(req.signedCookies);  //for signed
     // console.log(req.cookies); //for simple
 
+    res.locals.message = req.flash("success");
 
-    res.render("home",{allDetails,title,message:req.flash("success")});
+    //can also use in middle ware 
+
+
+    res.render("home",{allDetails,title});
 }
 
 
@@ -78,6 +82,13 @@ async function handlertoedit(req,res){
     let {id} = req.params;
 
     let data = await user.findById(id);
+
+    if(!data){
+
+        req.flash("success","not exist")
+
+        res.redirect("/hotel");
+    }
 
     res.render("edit",{data});
 

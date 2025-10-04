@@ -36,7 +36,7 @@
             <div class="hotel-info">
               <div class="hotel-top">
                 <span class="hotel-city"><%= detail.city %></span>
-                <span class="hotel-price">$<%= detail.price %> / night</span>
+                <span class="hotel-price">$<%= detail.price.toLocaleString("en-US")%> / night</span>
               </div>
               <div class="hotel-name"><%= detail.sellername %></div>
               <div class="hotel-actions">
