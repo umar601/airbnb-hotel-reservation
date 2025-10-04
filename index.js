@@ -14,6 +14,10 @@ const url = "mongodb://127.0.0.1:27017/airbnb"
 
 const expressError = require("./expresserro");
 
+const userRoute = require("./routes/userroute");
+
+// const client = require("./models/user");
+
 
 databaseconnection(url).then(()=>{
     console.log("sucessful")
@@ -22,6 +26,19 @@ databaseconnection(url).then(()=>{
 })
 
 configureMiddleware(app);
+
+// app.get("/hotel/demo",(req,res)=>{
+
+//   // let user = new client({
+
+//   //   email:"umarshah",
+//   //   username:"umarrrd"
+//   // })
+//   res.render("login")
+//   // await client.register(user,"password");
+// })
+
+app.use("/user",userRoute);
 
 app.use("/hotel",router);
 

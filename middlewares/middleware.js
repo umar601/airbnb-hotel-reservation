@@ -8,6 +8,12 @@ const expressSession = require("express-session");
 
 const flash = require("connect-flash");
 
+const passport = require("passport");
+
+const localStrategy = require("passport-local");
+
+const client = require("../models/user");
+
 
 
 function configureMiddleware(app) {
@@ -46,6 +52,30 @@ function configureMiddleware(app) {
 
 
    app.use(flash());
+
+
+// app.use(passport.initialize());
+
+// app.use(passport.session());
+
+// passport.use(new localStrategy(client.authenticate()));
+
+
+// passport.serializeUser(client.serializeUser());
+
+// passport.deserializeUser(client.deserializeUser());
+
+
+
+app.use(passport.initialize());
+
+app.use(passport.session());  //identify indifferent pages 
+
+passport.use(new localStrategy(client.authenticate()));
+
+passport.serializeUser(client.serializeUser());
+
+passport.deserializeUser(client.deserializeUser());
 }
 
 module.exports = configureMiddleware;

@@ -213,7 +213,21 @@ async function handlerToDeleteReview(req,res){
 
 }
 
+async function handlerToSignup(req,res) {
+
+    res.render("signup");
+    
+    
+}
+
+async function handlerToLogin(req,res) {
+
+    res.render("login");
+
+    
+}
 
 
 
-module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview}
+
+module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview,handlerToSignup,handlerToLogin}

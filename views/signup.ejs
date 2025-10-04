@@ -1,0 +1,44 @@
+<%- layout("./layout/boilerplate.ejs") %>
+
+<body class="bg-light">
+
+
+  <div class="d-flex justify-content-center align-items-center vh-100 vw-100">
+
+  
+    <div class="col-md-6 col-lg-4 bg-light bg-gradient p-4 rounded shadow">
+
+      <h3 class="text-center text-black mb-3">Signup</h3>
+
+      <form action="" class="needs-validation" novalidate>
+
+        <!-- Username -->
+        <div class="mt-3">
+          <input type="text" name="username" placeholder="Enter username" class="form-control" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Username required!</div>
+        </div>
+
+        <!-- Email -->
+        <div class="mt-3">
+          <input type="email" name="email" placeholder="Enter Email ..." class="form-control" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Email required!</div>
+        </div>
+
+        <!-- Password -->
+        <div class="mt-3">
+          <input type="password" name="password" placeholder="Enter password ..." class="form-control" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Password required!</div>
+        </div>
+        <div class="w-100  d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary w-50 mt-4 border border-2" type="submit">Signup</button>
+        <a href="http://localhost:8080/user/login" class="btn btn-primary w-50 mt-4 mr-5">login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <% block("footer").append('<script src="/script.js"></script>') %>
+</body>
