@@ -65,7 +65,10 @@ function configureMiddleware(app) {
 
 // passport.deserializeUser(client.deserializeUser());
 
-
+app.use((req, res, next) => {
+  res.locals.message = req.flash("success");
+  next();
+});
 
 app.use(passport.initialize());
 

@@ -2,6 +2,8 @@
 const { signedCookie } = require("cookie-parser");
 const user = require("../models/airbnb");
 const review = require("../models/review");
+const client = require("../models/user");
+const { message } = require("../listingSchema");
 
 
 async function hadlertogetalllisting(req,res){
@@ -30,7 +32,7 @@ async function hadlertogetalllisting(req,res){
     // console.log(req.signedCookies);  //for signed
     // console.log(req.cookies); //for simple
 
-    res.locals.message = req.flash("success");
+    // res.locals.message = req.flash("success");
 
     //can also use in middle ware 
 
@@ -215,6 +217,8 @@ async function handlerToDeleteReview(req,res){
 
 async function handlerToSignup(req,res) {
 
+    
+
     res.render("signup");
     
     
@@ -228,6 +232,45 @@ async function handlerToLogin(req,res) {
 }
 
 
+async function handlerToAddUser(req,res) {
 
 
-module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview,handlerToSignup,handlerToLogin}
+    let {username,password,email} = req.body;
+
+    let newClient = new client(
+        {
+            username:username,
+            email:email
+        }
+    )
+
+    await client.register(newClient,password).then(()=>{
+
+    req.flash("success","user register Scucesfully!");
+    res.redirect("/hotel");
+    }).catch((err)=>{
+
+    req.flash("success",err.message);
+
+       res.redirect("/user/signup");
+    })
+
+
+    
+}
+
+
+async function handdlerToVerifyLogin(req,res) {
+
+    req.flash("success","User login Successful!")
+
+    res.redirect("/hotel")
+
+
+    
+}
+
+
+
+
+module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview,handlerToSignup,handlerToLogin,handlerToAddUser,handdlerToVerifyLogin}
