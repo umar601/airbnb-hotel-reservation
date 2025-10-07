@@ -29,22 +29,34 @@ function asyncWrap(fun){
 }
 
 
+const loginuser = (req,res,next)=>{
+
+    if(!req.isAuthenticated()){
+      req.session.url = req.originalUrl;
+      // console.log(req.session.url);
+      return res.redirect("/user/login");
+    }
+    // console.log("e")
+    return next()
+}
+
+
 router.route("/")
 
 .get(asyncWrap(hadlertogetalllisting))
 
-.post(validateListing,uplaod.array('images',10),asyncWrap(handlertopostlisting))
+.post(validateListing,loginuser,uplaod.array('images',10),asyncWrap(handlertopostlisting))
 
-router.get("/new",asyncWrap(handlertonew))
+router.get("/new",loginuser,asyncWrap(handlertonew))
 
 
 router.route("/:id")
 
-.get(asyncWrap(handlertoedit))
+.get(loginuser,asyncWrap(handlertoedit))
 
-.patch(validateListing,asyncWrap(handelertoupdate))
+.patch(loginuser,validateListing,asyncWrap(handelertoupdate))
 
-.delete(asyncWrap(handelertodelete))
+.delete(loginuser,asyncWrap(handelertodelete))
 
 
 router.get("/view/:id",asyncWrap(handlertoviewspecfic))
@@ -52,9 +64,9 @@ router.get("/view/:id",asyncWrap(handlertoviewspecfic))
 
 router.post("/search",asyncWrap(handlertosearch))
 
-router.post("/:id/review",asyncWrap(handlerToAddReview));
+router.post("/:id/review",loginuser,asyncWrap(handlerToAddReview));
 
-router.delete("/:postid/review/:reviewid",asyncWrap(handlerToDeleteReview));
+router.delete("/:postid/review/:reviewid",loginuser,asyncWrap(handlerToDeleteReview));
 
 
 module.exports = router;

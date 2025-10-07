@@ -3,9 +3,11 @@
   <%- layout("./layout/boilerplate.ejs") %>
   <% block("head").append('<link rel="stylesheet" href="/view.css">') %>
 
-   <% if (message && message.length > 0) { %>
+  <body>
 
-    <h5 class="alert alert-success mt-3" style="display: flex; justify-content: space-between;align-items: center;width: 50%;margin: auto;"><%= message %><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" s></button></h5>
+    <% if (message && message.length > 0) { %>
+
+      <h5 class="alert alert-success mt-3" style="display: flex; justify-content: space-between;align-items: center;width: 50%;margin: auto;"><%= message %><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></h5>
       
    
   <% } %>

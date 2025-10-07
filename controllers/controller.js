@@ -6,6 +6,7 @@ const client = require("../models/user");
 const { message } = require("../listingSchema");
 
 
+
 async function hadlertogetalllisting(req,res){
 
     let allDetails = await user.find();
@@ -35,6 +36,9 @@ async function hadlertogetalllisting(req,res){
     // res.locals.message = req.flash("success");
 
     //can also use in middle ware 
+
+
+    // console.log(req.isAuthenticated());
 
 
     res.render("home",{allDetails,title});
@@ -129,7 +133,7 @@ async function handlertoviewspecfic(req,res){
 
     let data = await user.findById(id).populate("review");
 
-    res.render("view",{data,message:req.flash("success")});
+    res.render("view",{data});
 
 }
 
@@ -247,12 +251,18 @@ async function handlerToAddUser(req,res) {
     await client.register(newClient,password).then(()=>{
 
     req.flash("success","user register Scucesfully!");
-    res.redirect("/hotel");
+     req.login(newClient,(err)=>{
+        if(err){
+        res.redirect("/user/login");
+        }
+        req.flash("success","signup login Scuccesfull!")
+        res.redirect("/hotel")
+    })
     }).catch((err)=>{
 
     req.flash("success",err.message);
 
-       res.redirect("/user/signup");
+    res.redirect("/user/signup");
     })
 
 
@@ -264,6 +274,8 @@ async function handdlerToVerifyLogin(req,res) {
 
     req.flash("success","User login Successful!")
 
+    console.log(res.locals.redirectUrl)
+    let url = res.locals.redirectUrl || "/hotel";
     res.redirect("/hotel")
 
 
@@ -271,6 +283,21 @@ async function handdlerToVerifyLogin(req,res) {
 }
 
 
+async function handlerToLogout(req,res,) {
+
+    req.logout((err)=>{
+        if(!err){
+            req.flash("success","User logout Successfully!");
+            res.redirect("/hotel")
+        }else{
+            next(err);
+        }
+
+    })
+    
+}
 
 
-module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview,handlerToSignup,handlerToLogin,handlerToAddUser,handdlerToVerifyLogin}
+
+
+module.exports = {hadlertogetalllisting,handlertopostlisting,handlertoedit,handelertoupdate,handlertoviewspecfic,handelertodelete,handlertosearch,handlertonew,handlerToAddReview,handlerToDeleteReview,handlerToSignup,handlerToLogin,handlerToAddUser,handdlerToVerifyLogin,handlerToLogout}

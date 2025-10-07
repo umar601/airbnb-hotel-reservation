@@ -12,19 +12,27 @@
   <div class="container">
 
     <!-- Header -->
-    <div class="header">
-      <div class="logo">
+    <div class="header w-100">
+      <div class="logo w-50 ">
         <i class="fab fa-airbnb"></i>
         <span>airbnb</span>
       </div>
 
-      <!-- Search Form -->
+      <div class="d-flex justify-content-evenly align-items-center w-50 ">
       <form class="search-form" action="/hotel/search" method="POST">
         <input type="search" name="search" class="search-input" placeholder="Search by hotel name or city">
         <button type="submit" class="search-btn">
           <i class="fas fa-search"></i>
         </button>
       </form>
+      <% if(!user){ %>
+      <a href="/user/login" class="text-decoration-none btn btn-danger opacity-85">login</a>
+      <a href="/user/signup"class="text-decoration-none btn btn-danger opacity-85">signup</a>
+      <% }else{ %>
+      <a href="/user/logout" class="text-decoration-none btn btn-danger opacity-85">logout</a>
+      <% } %>
+      
+      </div>
     </div>
 
     <!-- Hotels Grid -->

@@ -65,10 +65,6 @@ function configureMiddleware(app) {
 
 // passport.deserializeUser(client.deserializeUser());
 
-app.use((req, res, next) => {
-  res.locals.message = req.flash("success");
-  next();
-});
 
 app.use(passport.initialize());
 
@@ -79,6 +75,14 @@ passport.use(new localStrategy(client.authenticate()));
 passport.serializeUser(client.serializeUser());
 
 passport.deserializeUser(client.deserializeUser());
+
+app.use((req, res, next) => {
+  res.locals.message = req.flash("success");
+  // console.log(req.user)
+  res.locals.user = req.user;
+  res.locals.redirectUrl = req.session.url ;
+  next();
+});
 }
 
 module.exports = configureMiddleware;
