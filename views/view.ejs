@@ -2,6 +2,7 @@
 
   <%- layout("./layout/boilerplate.ejs") %>
   <% block("head").append('<link rel="stylesheet" href="/view.css">') %>
+  <% block("head").append('<link rel="stylesheet" href="/ratingStyling.css">') %>
 
   <body>
 
@@ -58,8 +59,27 @@
     <hr>
     <h3>Reviews Section</h3>
     <form action="/hotel/<%=data._id%>/review" novalidate class="needs-validation" method="post">
-      <input type="range" name="rating" id="" required min="1" max="5" class="form-range" style="width:50%">
-      <textarea name="comment" id="" class="form-control" style="width:50%; height:150px;" required placeholder="Post your review"></textarea>
+      <!-- <input type="range" name="rating" id="" required min="1" max="5" class="form-range" style="width:50%"> -->
+
+
+      <fieldset class="starability-slot">
+        <legend>Rating:</legend>
+        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating."/>
+        <input type="radio" id="first-rate1" name="rating" value="1" checked />
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="rating" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="rating" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="rating" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="rating" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+
+
+
+      <textarea name="comment" id="" class="form-control mt-3" style="width:50%; height:150px;" required placeholder="Post your review"></textarea>
        <div class="invalid-feedback">
         feedBack required !
        </div>
@@ -78,9 +98,11 @@
             <h5 class="card-title text-primary fw-bold mb-0">
               <i class="fas fa-user me-2"></i><%=review.owner.username||"Anonymous"%>
             </h5>
-            <span class="badge bg-warning text-dark fs-6">
+            <!-- <span class="badge bg-warning text-dark fs-6">
               <i class="fas fa-star me-1"></i><%= review.rating %>
-            </span>
+            </span> -->
+            <p class="starability-result" data-rating=<%= review.rating %>></p>
+            
           </div>
           
           <p class="card-subtitle text-muted mb-3 small">
