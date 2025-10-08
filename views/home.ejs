@@ -48,9 +48,11 @@
               </div>
               <div class="hotel-name"><%= detail.sellername %></div>
               <div class="hotel-actions">
+                <% if(user&&detail.owner==user._id.toString()) {%>
                 <a href="/hotel/<%= detail._id %>" class="edit-btn">
                   <i class="fas fa-edit"></i> Edit
                 </a>
+                <% } %>
               </div>
             </div>
           </div>
@@ -64,10 +66,11 @@
       </div>
     <% } %>
 
-    <!-- Add Hotel -->
+    <% if(user){ %>
     <a href="/hotel/new" class="add-hotel-btn">
       <i class="fas fa-plus"></i> Add new hotel
     </a>
+    <% } %>
 
   </div>
 </body>
