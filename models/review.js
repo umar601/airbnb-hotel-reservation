@@ -17,9 +17,10 @@ const reviewSchema = moongoose.Schema({
         default:Date.now
 
     },
-    createdBy:{
-        type:String,
-        required:true
+    owner:{
+       type:moongoose.Schema.Types.ObjectId,
+        ref:"client"
+        
 
     }
 })

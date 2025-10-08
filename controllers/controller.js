@@ -72,9 +72,8 @@ async function handlertopostlisting(req,res,next){
         description:description
     })
 
-    await newuser.save().then((res)=>{
-        console.log(res)
-    })
+    newuser.owner = newuser;
+    await newuser.save() 
 
     res.redirect("/hotel")
 
@@ -131,7 +130,7 @@ async function handlertoviewspecfic(req,res){
 
     let {id} = req.params;
 
-    let data = await user.findById(id).populate("review");
+    let data = await user.findById(id).populate({path:"review",populate:{path:"owner"}});
 
     res.render("view",{data});
 
@@ -189,9 +188,9 @@ async function handlerToAddReview(req,res) {
 
         rating:rating,
         comment:comment,
-        createdBy:"umar"
+        owner:req.user
     })
-
+    
     await newReview.save();
     listing.review.push(newReview);
     await listing.save();
