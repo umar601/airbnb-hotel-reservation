@@ -130,7 +130,7 @@
                     </a>
                 </div>
             </form>
-            
+            <% if(user&&data.owner==user._id.toString()) {%>
             <form action="http://localhost:8080/hotel/<%= data._id %>?_method=delete" method="post" onsubmit="return confirm('Are you sure you want to delete this hotel listing? This action cannot be undone.')">
                 <div class="bt-group">
                     <button type="submit" class="bt bt-delete">
@@ -138,6 +138,8 @@
                     </button>
                 </div>
             </form>
+            <% } %>
+
         </div>
     </div>
 

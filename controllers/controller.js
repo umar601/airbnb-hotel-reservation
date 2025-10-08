@@ -69,10 +69,10 @@ async function handlertopostlisting(req,res,next){
         location:location,
         status:status,
         images:imageUrls,
-        description:description
+        description:description,
+        owner:req.user
     })
-
-    newuser.owner = newuser;
+    
     await newuser.save() 
 
     res.redirect("/hotel")

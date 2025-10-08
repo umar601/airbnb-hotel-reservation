@@ -90,12 +90,13 @@
           
           <div class="card-text flex-grow-1">
             <p class="mb-0 lh-base" style="font-size: 1rem;">
-              <%= review.comment %>
+            <%= review.comment%>
             </p>
-          <!-- <p><%= review._id %></p> -->
+          <% if(user&&review.owner._id.toString()==user._id.toString()) {%>
           <form action="http://localhost:8080/hotel/<%=data._id%>/review/<%=review._id%>?_method=Delete"method="post" onsubmit="return confirm('Are you sure you want to delete this review?');">
           <button class="btn btn-danger mt-3" type="Submit">Delete Review</button>
           </form>
+          <% }%>
           </div>
         </div>
       </div>

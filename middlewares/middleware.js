@@ -81,6 +81,7 @@ app.use((req, res, next) => {
   // console.log(req.user)
   res.locals.user = req.user;
   res.locals.redirectUrl = req.session.url ;
+  // console.log(req.user)
   next();
 });
 }
