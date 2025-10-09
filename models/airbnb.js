@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const review = require("./review");
+const { type } = require("../listingSchema");
+const { string, required, array } = require("joi");
 
 // async function main() {
 
@@ -44,8 +46,14 @@ const airbnbSchema = new mongoose.Schema(
             type:String,
         },
         images:{
-            type:Array,
-            required:true
+            url:{
+                type:Array,
+                // required:true
+            },
+            filename:{
+                type:Array,
+                // required:true
+            }
         },
         status:{
             type:String,

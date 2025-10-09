@@ -40,7 +40,8 @@
       <div class="hotels-grid">
         <% for(detail of allDetails) { %>
           <div class="hotel-card" onclick="window.location.href='/hotel/view/<%= detail._id %>'">
-            <img src="<%= detail.images[0] %>" alt="Hotel image" class="hotel-image">
+            <!-- <h3>url<%= detail.images.url[0]%></h3> -->
+            <img src="<%= detail.images.url[0] %>" alt="Hotel image" class="hotel-image">
             <div class="hotel-info">
               <div class="hotel-top">
                 <span class="hotel-city"><%= detail.city %></span>

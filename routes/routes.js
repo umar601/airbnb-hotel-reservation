@@ -45,7 +45,7 @@ router.route("/")
 
 .get(asyncWrap(hadlertogetalllisting))
 
-.post(validateListing,loginuser,uplaod.array('images',10),asyncWrap(handlertopostlisting))
+.post(loginuser,uplaod.array('images',10),asyncWrap(handlertopostlisting))
 
 router.get("/new",loginuser,asyncWrap(handlertonew))
 

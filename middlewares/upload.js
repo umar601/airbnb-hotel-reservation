@@ -1,15 +1,19 @@
+const cloudinary = require("../cloudconnection");
+const {CloudinaryStorage} = require("multer-storage-cloudinary");
 const multer = require("multer");
-const path = require("path");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../myuploads")); // make sure this folder exists
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
+
+const storage = new CloudinaryStorage({
+
+  cloudinary:cloudinary,
+  params:{
+    folder:"airbnb_dev",
+    allowed_formats:["png","jpeg","jpg","webp"]
   }
-});
 
-const upload = multer({ storage });
+})
 
-module.exports = upload;
+
+const uplaod = multer({storage});
+
+module.exports = uplaod;

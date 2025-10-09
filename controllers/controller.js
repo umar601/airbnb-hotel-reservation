@@ -46,17 +46,20 @@ async function hadlertogetalllisting(req,res){
 
 
 async function handlertopostlisting(req,res,next){
-    let imageUrls = [];
 
-    req.flash("success","Listing posted successfully!")
+    // console.log(req.files);
+    // res.send(req.files);
+//     let imageUrls = [];
 
-    if (req.files && req.files.length > 0) {
+//     req.flash("success","Listing posted successfully!")
 
-        imageUrls = req.files.map((file) => {
+//     if (req.files && req.files.length > 0) {
 
-        return `${req.protocol}://${req.get("host")}/myuploads/${file.filename}`;
-    });
-}
+//         imageUrls = req.files.map((file) => {
+
+//         return `${req.protocol}://${req.get("host")}/myuploads/${file.filename}`;
+//     });
+// }
 
     let {sellername,type,price,sellno,city,location,status,images,description} = req.body;
 
@@ -68,11 +71,18 @@ async function handlertopostlisting(req,res,next){
         city:city,
         location:location,
         status:status,
-        images:imageUrls,
         description:description,
         owner:req.user
     })
-    
+
+    // console.log(req.files);
+
+    // console.log(req.files.path,"    ",req.files.filename);
+
+    for(let i=0;i<req.files.length;i++){
+    newuser.images.url.push( req.files[i].path)
+    newuser.images.filename.push(req.files[i].filename)
+    }
     await newuser.save() 
 
     res.redirect("/hotel")
@@ -141,6 +151,12 @@ async function handelertodelete(req,res){
     req.flash("success","Listing deleted successfully!")
 
     let {id} = req.params;
+
+   let listing = await user.findById(id);
+
+    if (listing.reviews && listing.reviews.length > 0) {
+    await review.deleteMany({ _id: { $in: listing.reviews } })
+    }
 
     await user.findByIdAndDelete(id);
 

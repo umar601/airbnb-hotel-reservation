@@ -18,9 +18,7 @@ main()
 })
 
 
-user.insertMany(
-
-  [
+user.insertMany([
   {
     type: "Hotel",
     sellername: "Pearl Continental Lahore",
@@ -30,13 +28,22 @@ user.insertMany(
     city: "Lahore",
     description: "5-star luxury hotel with pool, restaurants, and modern rooms.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -47,13 +54,22 @@ user.insertMany(
     city: "Islamabad",
     description: "Premium hotel near diplomatic enclave with spa and fine dining.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-      "https://images.unsplash.com/photo-1559599101-f09722fb4948",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427",
-      "https://images.unsplash.com/photo-1584132869994-873f9363a562",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1559599101-f09722fb4948",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427",
+        "https://images.unsplash.com/photo-1584132869994-873f9363a562",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -64,13 +80,22 @@ user.insertMany(
     city: "Karachi",
     description: "Luxury business hotel with rooftop dining and sea views.",
     status: "Booked",
-    images: [
-      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -81,13 +106,22 @@ user.insertMany(
     city: "Multan",
     description: "Affordable modern hotel with spacious rooms and parking.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
-      "https://images.unsplash.com/photo-1559599101-f09722fb4948",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
-      "https://images.unsplash.com/photo-1584132869994-873f9363a562"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
+        "https://images.unsplash.com/photo-1559599101-f09722fb4948",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
+        "https://images.unsplash.com/photo-1584132869994-873f9363a562"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -98,13 +132,22 @@ user.insertMany(
     city: "Skardu",
     description: "Beautiful resort surrounded by mountains and lake view.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
-      "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
-      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
+        "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -115,13 +158,22 @@ user.insertMany(
     city: "Lahore",
     description: "Heritage hotel combining colonial charm with luxury.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
-      "https://images.unsplash.com/photo-1584132869994-873f9363a562",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
+        "https://images.unsplash.com/photo-1584132869994-873f9363a562",
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -132,13 +184,22 @@ user.insertMany(
     city: "Karachi",
     description: "Seaside hotel with family suites and restaurants.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-      "https://images.unsplash.com/photo-1568495248636-6432b97bd949"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1568495248636-6432b97bd949"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -149,13 +210,22 @@ user.insertMany(
     city: "Murree",
     description: "Mountain view hotel with cozy rooms and rooftop dining.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1584132869994-873f9363a562",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1584132869994-873f9363a562",
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -166,13 +236,22 @@ user.insertMany(
     city: "Quetta",
     description: "Budget-friendly hotel with basic amenities.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
-      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
-      "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
-      "https://images.unsplash.com/photo-1559599101-f09722fb4948"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
+        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
+        "https://images.unsplash.com/photo-1568495248636-6432b97bd949",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1559599101-f09722fb4948"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   },
   {
     type: "Hotel",
@@ -183,15 +262,21 @@ user.insertMany(
     city: "Swat",
     description: "Luxury hotel with mountain views and cultural interiors.",
     status: "Available",
-    images: [
-      "https://images.unsplash.com/photo-1584132869994-873f9363a562",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
-    ]
+    images: {
+      url: [
+        "https://images.unsplash.com/photo-1584132869994-873f9363a562",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39",
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
+      ],
+      filename: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg"
+      ]
+    }
   }
-]
-
-
-)
+]);
