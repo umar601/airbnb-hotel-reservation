@@ -2,8 +2,9 @@
 
   <%- layout("./layout/boilerplate.ejs") %>
   <% block("head").append('<link rel="stylesheet" href="/view.css">') %>
+  <% block("head").append('<link rel="stylesheet" href="/ratingStyling.css">') %>
   <% block("head").append('<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />') %>
-  <% block("head").append('<style>#map{height:400px;width:100%;border-radius:10px;margin-top:20px;}</style>') %>
+
 
 
   <body>
@@ -139,26 +140,6 @@
 
   <% block("footer").append('<script src="/script.js"></script>') %>
 <% block("footer").append('<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>')%>
-
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    
-         var map = L.map('map').setView([24.8607, 67.0011],9);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         maxZoom: 20,
-        }).addTo(map);
-
-        var marker = L.marker([24.8607, 67.0011]).addTo(map);
-
-
-
-
-        });
-
-    
-  </script>
 
 
 </body>

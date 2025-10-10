@@ -19,4 +19,20 @@
 })()
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    
+  var map = L.map('map').setView([24.8607, 67.0011],9);
+
+ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 20,
+ }).addTo(map);
+
+ var marker = L.marker([24.8607, 67.0011]).addTo(map);
+
+
+
+
+ });
+
+
 console.log("hello")

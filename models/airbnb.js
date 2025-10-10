@@ -75,17 +75,12 @@ const airbnbSchema = new mongoose.Schema(
         ref:"client"
 
         },
-        locate: {
-        type: {
-      type: String,
-      enum: ["Point"],
-      required: true
-        },
-    coordinates: {
+         
+        coordinates: {
       type: [Number], // [lng, lat]
 
       }
-     }
+     
 
     }
 )
