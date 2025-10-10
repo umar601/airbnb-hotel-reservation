@@ -23,7 +23,7 @@ function configureMiddleware(app) {
 
   
   app.use(express.static(path.join(__dirname, "../public")));
-  app.use("/myuploads", express.static(path.join(__dirname, "../myuploads")));
+  // app.use("/myuploads", express.static(path.join(__dirname, "../myuploads")));
 
   
   app.use(express.urlencoded({ extended: true }));

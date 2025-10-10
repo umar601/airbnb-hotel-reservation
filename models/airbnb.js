@@ -74,11 +74,23 @@ const airbnbSchema = new mongoose.Schema(
         type:mongoose.Schema.Types.ObjectId,
         ref:"client"
 
-        }
-  
+        },
+        locate: {
+        type: {
+      type: String,
+      enum: ["Point"],
+      required: true
+        },
+    coordinates: {
+      type: [Number], // [lng, lat]
+
+      }
+     }
 
     }
 )
+
+airbnbSchema.index({ locate: "2dsphere" });
 
 
 airbnbSchema.post("findOneAndDelete",async(doc)=>{
