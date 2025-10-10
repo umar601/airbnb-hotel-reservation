@@ -8,17 +8,26 @@ It allows users to **add, view, update, and delete hotels** with details such as
 
 public/ Static assets (CSS, images)
 styles/
-newhotel.css # Form and layout styling
-views/ # EJS templates
-index.ejs # List all hotels
-new.ejs # Add new hotel form
-view.ejs # View single hotel details
-edit.ejs # Edit hotel form
+newhotel.css 
+# Form and layout styling
+views/ 
+# EJS templates
+index.ejs 
+# List all hotels
+new.ejs 
+# Add new hotel form
+view.ejs 
+# View single hotel details
+edit.ejs 
+# Edit hotel form
 models/
-hotel.js # Mongoose schema for hotels
+hotel.js 
+# Mongoose schema for hotels
 routes/
-hotelRoutes.js # REST API routes
-app.js # Express server setup
+hotelRoutes.js 
+# REST API routes
+app.js 
+# Express server setup
 package.json
 README.md
 
