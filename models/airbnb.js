@@ -90,7 +90,7 @@ const airbnbSchema = new mongoose.Schema(
     }
 )
 
-airbnbSchema.index({ locate: "2dsphere" });
+
 
 
 airbnbSchema.post("findOneAndDelete",async(doc)=>{
