@@ -4,13 +4,16 @@ const app = express();
 
 const port = 8080;
 
+require("dotenv").config();
+
 const router = require("./routes/routes");
 
 const configureMiddleware = require("./middlewares/middleware");
 
-const { databaseconnection } = require("./connection");
 
-const url = "mongodb://127.0.0.1:27017/airbnb"
+const url = "mongodb://127.0.0.1:27017/airbnb";
+
+const { databaseconnection } = require("./connection");
 
 const expressError = require("./expresserro");
 
@@ -19,10 +22,15 @@ const userRoute = require("./routes/userroute");
 // const client = require("./models/user");
 
 
+if(!url){
+  console.log("not")
+}
+
 databaseconnection(url).then(()=>{
     console.log("sucessful")
 }).catch((err)=>{
-    console.log("failed")
+
+  console.log(err);
 })
 
 configureMiddleware(app);
