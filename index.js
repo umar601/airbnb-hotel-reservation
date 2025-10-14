@@ -11,7 +11,7 @@ const router = require("./routes/routes");
 const configureMiddleware = require("./middlewares/middleware");
 
 
-const url = process.env.ATLASDB_URL;
+const url = "mongodb://127.0.0.1:27017/airbnb";
 
 const { databaseconnection } = require("./connection");
 
