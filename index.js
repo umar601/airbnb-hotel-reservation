@@ -22,14 +22,13 @@ const userRoute = require("./routes/userroute");
 // const client = require("./models/user");
 
 
-if(!url){
-  console.log("not")
-}
+// if(!url){
+//   console.log("not")
+// }
 
 databaseconnection(url).then(()=>{
     console.log("sucessful")
 }).catch((err)=>{
-
   console.log(err);
 })
 
