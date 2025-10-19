@@ -19,12 +19,6 @@ const expressError = require("./expresserro");
 
 const userRoute = require("./routes/userroute");
 
-// const client = require("./models/user");
-
-
-// if(!url){
-//   console.log("not")
-// }
 
 databaseconnection(url).then(()=>{
     console.log("sucessful")
@@ -34,24 +28,19 @@ databaseconnection(url).then(()=>{
 
 configureMiddleware(app);
 
-// app.get("/hotel/demo",(req,res)=>{
-
-//   // let user = new client({
-
-//   //   email:"umarshah",
-//   //   username:"umarrrd"
-//   // })
-//   res.render("login")
-//   // await client.register(user,"password");
-// })
 
 app.use("/user",userRoute);
 
 app.use("/hotel",router);
 
+
+//if no route match 
+
 app.all(/.*/, (req, res, next) => {
   next(new expressError(404, "Page not found"));
 });
+
+//error handling midlleware 
 
 app.use((err,req,res,next)=>{
 
@@ -62,8 +51,7 @@ app.use((err,req,res,next)=>{
   })
 
 
-
-
+  //server 
 
 app.listen(port,()=>{
 
