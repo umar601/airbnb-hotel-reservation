@@ -20,7 +20,7 @@ const expressError = require("./expresserro");
 const userRoute = require("./routes/userroute");
 
 
-databaseconnection(url).then(()=>{
+databaseconnection(process.env.ATLASDB_URL).then(()=>{
     console.log("sucessful")
 }).catch((err)=>{
   console.log(err);
