@@ -29,6 +29,9 @@ databaseconnection(url).then(()=>{
 configureMiddleware(app);
 
 
+
+
+
 app.use("/user",userRoute);
 
 app.use("/hotel",router);
@@ -37,6 +40,7 @@ app.use("/hotel",router);
 //if no route match 
 
 app.all(/.*/, (req, res, next) => {
+  res.redirect("/user/login")
   next(new expressError(404, "Page not found"));
 });
 
